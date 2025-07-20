@@ -1,0 +1,10 @@
+Media License for IW5 Survival Loader
+
+The following files are property of LethalBeats and are NOT covered by the MIT License:
+- media/icon.ico
+- media/lethalbeats.png
+- The LethalBeats brand and logo
+
+These resources may only be used in projects related to LethalBeats or with explicit permission from the organization. Commercial use, modification, or redistribution of these files outside of LethalBeats projects is prohibited.
+
+For questions or permissions, contact: LastDemon99 / LethalBeats
