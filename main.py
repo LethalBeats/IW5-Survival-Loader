@@ -350,6 +350,10 @@ class LauncherGUI():
                         with rarfile.RarFile(rar_path) as rf:
                             total_files = len(files)
                             for idx, fname in enumerate(files):
+                                dest_path = os.path.join(extract_dir, fname)
+                                dest_dir = os.path.dirname(dest_path)
+                                if not os.path.exists(dest_dir):
+                                    os.makedirs(dest_dir, exist_ok=True)
                                 try:
                                     rf.extract(fname, path=extract_dir)
                                     percent = 50 + int(((idx + 1) / total_files) * 50)
@@ -359,13 +363,17 @@ class LauncherGUI():
 
                     def extract_from_zip(zip_path, filename, extract_dir):
                         import zipfile
+                        dest_path = os.path.join(extract_dir, filename)
+                        dest_dir = os.path.dirname(dest_path)
+                        if not os.path.exists(dest_dir):
+                            os.makedirs(dest_dir, exist_ok=True)
                         with zipfile.ZipFile(zip_path, "r") as zf:
                             if filename in zf.namelist():
                                 zf.extract(filename, path=extract_dir)
                             else:
                                 raise Exception(f"{filename} no encontrado en el ZIP")
 
-                    rar_files = [f for f in self.files_to_update if f in self.latest_sha]
+                    rar_files = list(set(self.files_to_update))
                     if rar_files:
                         import tempfile
                         rar_path = os.path.join(tempfile.gettempdir(), "IW5-Survival-Reimagined.rar")
