@@ -24,7 +24,7 @@ This launcher automates the download, update, and activation process for the sur
 - Automatically load the mod when iw5 plutonium is detected.
 
 ## Download
-- Loader: [IW5_SurvivalLoader.exe](https://github.com/LastDemon99/IW5-Survival-Loader/releases/download/iw5-survival-loader-v1.0/IW5_SurvivalLoader.exe)
+- Loader: [IW5_SurvivalLoader.exe](https://github.com/LethalBeats/IW5-Survival-Loader/releases/download/iw5-survival-loader-v1.0/IW5_SurvivalLoader.exe)
 
 ## Manual Mod Installation
 If you prefer to install the mod manually, you can find the mod and detailed instructions at:
