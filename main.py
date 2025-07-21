@@ -374,7 +374,7 @@ class LauncherGUI():
                                 raise Exception(f"{filename} not found in ZIP")
 
                     rar_files = list(set(self.files_to_update))
-                    if rar_files:
+                    if rar_files and any(f != "z_svr_bots.iwd" for f in rar_files):
                         import tempfile
                         rar_path = os.path.join(tempfile.gettempdir(), "IW5-Survival-Reimagined.rar")
                         tag_name = self.latest_tag['name']
@@ -382,7 +382,7 @@ class LauncherGUI():
                         download_file(rar_url, rar_path, label="Downloading: IW5-Survival-Reimagined.rar")
                         self.set_progress(50, "Download complete, extracting files...")
                         try:
-                            extract_from_rar(rar_path, rar_files, IW5_DIR)
+                            extract_from_rar(rar_path, [f for f in rar_files if f != "z_svr_bots.iwd"], IW5_DIR)
                         finally:
                             try:
                                 os.remove(rar_path)
