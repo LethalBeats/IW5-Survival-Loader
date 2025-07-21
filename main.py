@@ -371,7 +371,7 @@ class LauncherGUI():
                             if filename in zf.namelist():
                                 zf.extract(filename, path=extract_dir)
                             else:
-                                raise Exception(f"{filename} no encontrado en el ZIP")
+                                raise Exception(f"{filename} not found in ZIP")
 
                     rar_files = list(set(self.files_to_update))
                     if rar_files:
@@ -379,7 +379,7 @@ class LauncherGUI():
                         rar_path = os.path.join(tempfile.gettempdir(), "IW5-Survival-Reimagined.rar")
                         tag_name = self.latest_tag['name']
                         rar_url = f"{GITHUB_RELEASE_BASE}/{tag_name}/IW5-Survival-Reimagined.rar"
-                        download_file(rar_url, rar_path, label="Descargando: IW5-Survival-Reimagined.rar")
+                        download_file(rar_url, rar_path, label="Downloading: IW5-Survival-Reimagined.rar")
                         self.set_progress(50, "Download complete, extracting files...")
                         try:
                             extract_from_rar(rar_path, rar_files, IW5_DIR)
@@ -391,16 +391,16 @@ class LauncherGUI():
 
                     if "z_svr_bots.iwd" in self.files_to_update:
                         bots_url = "https://github.com/ineedbots/iw5_bot_warfare/releases/download/v2.3.0/iw5bw230.zip"
-                        self.set_progress(0, "Descargando: z_svr_bots.iwd (Bot Warfare)")
+                        self.set_progress(0, "Downloading: z_svr_bots.iwd (Bot Warfare)")
                         import tempfile
                         zip_path = os.path.join(tempfile.gettempdir(), "iw5bw230.zip")
-                        download_file(bots_url, zip_path, label="Descargando: z_svr_bots.iwd (Bot Warfare)", progress_start=0, progress_end=10)
+                        download_file(bots_url, zip_path, label="Downloading: z_svr_bots.iwd (Bot Warfare)", progress_start=0, progress_end=10)
                         extract_from_zip(zip_path, "z_svr_bots.iwd", IW5_DIR)
                         try:
                             os.remove(zip_path)
                         except:
                             pass
-                        self.set_progress(10, "z_svr_bots.iwd descargado")
+                        self.set_progress(10, "z_svr_bots.iwd downloaded")
 
                     self.set_button_state("Waiting game", BTN_DISABLED)
                     self.set_progress(100, MSG_UPDATED)
